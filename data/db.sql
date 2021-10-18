@@ -1,5 +1,17 @@
 -- dvdrental database dump
 --
+-- Based on sample database provided by:
+-- https://www.postgresqltutorial.com/postgresql-sample-database/
+--
+-- IMPORTANT: This must be modifed before use.
+--            All instances of __PATH__ must be replaced
+--            with absoute path to directory containing
+--            .dat files.
+--
+-- This can be done on the command line:
+--
+-- ./tools/mksql
+--
 
 BEGIN;
 

@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 #
-# generate SQL from data/restore.sql
+# generate SQL from data/db.sql
+#
+#    replaces __PATH__ in data/db.sql with
+#    absolute path to ./data for COPY statements
+#
 
 rootdir="$(cd "${0%/*}/../." && pwd -P)"
-user="dvdrental"
-admin="${USER}"
+datadir="${rootdir}/data"
 
-sed -Ee "s:__PATH__:${rootdir}/data:" $1
+sed -Ee "s:__PATH__:${datadir}:" "${datadir}/db.sql"

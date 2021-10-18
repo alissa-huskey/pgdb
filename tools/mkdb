@@ -5,10 +5,11 @@
 rootdir="$(cd "${0%/*}/../." && pwd -P)"
 datadir="${rootdir}/data"
 
-loadfile() {
-  local user=dvdrental database=dvdrental filename="$1"
-  tools/mksql ${datadir}/${filename}.sql | psql --user=$user ${database} 
-}
+if [[ -z "${PGUSER}" ]] || [[ -z "${PGDATABASE}" ]]; then
+  echo "Please set the PGUSER and PGDATABASE environment variables." >&2
+  echo "See: env" >&2
+  exit 1
+fi
 
 ${rootdir}/tools/setup || exit $?
-loadfile db            || exit $?
+tools/mksql | psql --user=${PGUSER} ${PGDATABASE} || exit $?

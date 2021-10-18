@@ -1,73 +1,62 @@
 pgdb
 ====
 
-This project is to mess around with PostgreSQL.
+This project is to mess around with PostgreSQL using Python. It can be found
+on [github][repo].
 
-Sample database downloaded from [PostgreSQL Tutorial][sample-db]. Using
-[ElephantSQL][elephant] for database hosting.
+Sample database downloaded from [PostgreSQL Tutorial][sample-db].
 
 [sample-db]: https://www.postgresqltutorial.com/postgresql-sample-database/
 [elephant]: https://www.elephantsql.com/
+[poetry]: https://python-poetry.org/
+[repo]: https://github.com/alissa-huskey/pgdb
+
+Prerequisites
+-------------
+
+* bash 4+
+* python 3.8+
+* [postgresql](https://www.postgresql.org/)
+* [poetry][poetry]
 
 Setup
 -----
 
-### Create a password file
+`tl;dr` [^*]
 
-* [The Password File](https://www.postgresql.org/docs/current/libpq-pgpass.html)
+1. `git clone https://github.com/alissa-huskey/pgdb.git`
+1. `cp env .env`
+1. `source .env`
+1. `./tools/mkdb`
+1. `poetry install`
+1. `poetry shell`
+1. `python pgdb/main.py`
 
-Create a `.pgpass` file in your home directory.
+[^*]: https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read
 
-```
-# located at
-# ----------
-# windows:   %appdata%/postgresql/pgpass.conf
-# mac/linux: ~/.pgpass
-#
-# permission
-# ----------
-# Restrict access to only the owner with the following command:
-# 
-# chmod 0600 path-to-passfile
+### Config
 
-# see also
-# --------
-# https://www.postgresql.org/docs/current/libpq-pgpass.html
-#
-# syntax
-# ------
-# Lines beginning with # are comments.
-# All other lines should have the following format
-#   with * as wildcard.
-#
-# hostname:port:database:username:password
-# 
-# examples
-# --------
-# localhost:5432:demo:dbuser:demo@123
-# *:*:*:postgres:admin12345
-#
+Use the following example files and the instructions therein as a basis for
+their counterparts on your local machine.
 
-```
+* [.env](env)
+* [.pgpass](pgpass)
 
-### Create a local .env file
+### Scripts
 
-Create a `.env` file:
+While you really just need to run `./tools/mkdb`, the following setup scripts
+might be a useful reference.
+
+* [setup](tools/setup) -- drops and recreates user and database
+* [mksql](tools/mksql) -- generate SQL by replacing `__PATH__` with absolute path to `./data`
+* [mkdb](tools/mkdb) -- [re]create user and database then load schema and sample data
+
+### Development environment
+
+Use [poetry][poetry] to install Python dependencies, create a virtual
+envionment, then activate it in your shell.
 
 ```bash
-#!/usr/bin/env bash
-
-PGUSER=""
-PGDATABASE=""
-PGHOST=""
-
-# PG_COLOR="always"       # always, never, auto
-
-```
-
-### Create user and database
-
-```bash
-createuser dvdrental -P
-createdb dvdrental --owner=dvdrental
+poetry install
+poetry shell
 ```

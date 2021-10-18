@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#
+# pgdb env file
+#
+#   sourced automatically by VS Code
+#
+#   use a program like autoenv to source any .env file on cd
+#      - https://github.com/hyperupcall/autoenv
+#
+#   to manually source at the command line:
+#   $ source .env
+#
+# fill in the values to the following environment variables:
+#
+
+PGDATABASE="dvdrental"
+PGUSER="dvdrental"
+# PGPASS=""
+# PGHOST=""
+# PGPORT=""
+
+# Misc recommendations
+# ====================
+
+# on linux/macos, hide cache directories
+#   use .pycache instead of __pycache__ as the directory name
+export PYTHONPYCACHEPREFIX=".pycache"
+
+# shell utilities
+# ---------------
+# comment/uncomment to activate/deactivate as desired
+#
+
+source tools/include.sh
+setup_python_path
+# setup_poetry_exes
+# auto_start_poetry_shell

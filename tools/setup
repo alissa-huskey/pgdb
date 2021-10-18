@@ -3,13 +3,23 @@
 # drop and recreate a postgresql user and database
 #
 
-export PGUSER="${USER}"
+if [[ -z "${USER}" ]]; then
+  echo "Please set USER environment variable to" >&2
+  echo "  the name of the user who owns the postgres database." >&2
+  exit 1
+fi
 
-database="dvdrental"
-user="dvdrental"
+if [[ -z "${PGUSER}" ]] || [[ -z "${PGDATABASE}" ]]; then
+  echo "Please set the PGUSER and PGDATABASE environment variables." >&2
+  echo "See: env" >&2
+  exit 1
+fi
 
-dropdb "${database}" --if-exists || exit $?
-dropuser "${user}" --if-exists || exit $?
+owner="${PGUSER}"
+typeset -gx PGUSER="${USER}"
 
-createuser "${user}" --role=pg_read_server_files
-createdb "${database}" --owner="${user}" --lc-collate=C --encoding=UTF-8
+dropdb "${PGDATABASE}" --if-exists || exit $?
+dropuser "${owner}" --if-exists || exit $?
+
+createuser "${owner}" --role=pg_read_server_files || exit $?
+createdb "${PGDATABASE}" --owner="${owner}" --lc-collate=C --encoding=UTF-8 || exit $?
