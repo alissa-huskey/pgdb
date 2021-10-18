@@ -29,7 +29,7 @@ Prerequisites
 Setup
 -----
 
-| [Config](#config) | [Scripts](#scripts) | [Development environment](#development-environment) |
+| [Config](#config) | [Scripts](#scripts) | [Development Environment](#development-environment) |
 
 `tl;dr` [^*]
 
@@ -83,4 +83,12 @@ and run a query using each of the following drivers:
 * [postgresql](pgdb/db_postgresql.py)
 * [psycopg](pgdb/db_psycopg.py)
 
-----
+Recommended Tools
+-----------------
+
+* [pgcli](https://github.com/dbcli/pgcli): a Postgres REPL that is a vast improvement over the bundled `psql` client.
+* [ipython](https://ipython.org):          a Python Interactive Shell, a replacement for the bundled `python` CLI.
+
+[pgcli-img]: https://raw.githubusercontent.com/dbcli/pgcli/master/screenshots/pgcli.gif
+[ipython-img]: https://switowski.com/assets/img/posts/img_2021-01-27-ipython-edit-any-function.gif
+
