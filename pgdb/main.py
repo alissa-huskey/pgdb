@@ -25,7 +25,7 @@ def main():
         if reply.isnumeric():
             reply = drivers[int(reply)-1]
 
-        mod = importlib.import_module(f"db_{reply}", package="dvds")
+        mod = importlib.import_module(f"db_{reply}", package="pgdb")
         print(f"\nUsing the {reply} driver.\n")
         mod.main()
         print()

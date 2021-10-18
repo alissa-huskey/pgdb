@@ -1,6 +1,6 @@
 import pg8000.native as pg
 
-from dvds import CONN
+from pgdb import CONN
 
 def main():
     """connect and run a simple query using pg8000"""

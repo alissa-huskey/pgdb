@@ -1,7 +1,7 @@
 from contextlib import contextmanager
 import psycopg2
 
-from dvds import CONN
+from pgdb import CONN
 
 @contextmanager
 def psycopg():
