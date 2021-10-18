@@ -16,8 +16,7 @@ Table of Contents
 
 * [Prerequisites](#prerequisites)
 * [Setup](#setup)
-* [Examples](#examples)
-
+* [Python Samples](#python-samples)
 
 Prerequisites
 -------------
@@ -64,7 +63,7 @@ might be a useful reference.
 * [mksql](tools/mksql) -- generate SQL by replacing `__PATH__` with absolute path to `./data`
 * [mkdb](tools/mkdb) -- [re]create user and database then load schema and sample data
 
-### Development environment
+### Development Environment
 
 Use [poetry][poetry] to install Python dependencies, create a virtual
 envionment, then activate it in your shell.
@@ -74,7 +73,7 @@ poetry install
 poetry shell
 ```
 
-Python samples
+Python Samples
 --------------
 
 This project includes simple scripts which connecting to the sample database
