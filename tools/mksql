@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# generate SQL from data/restore.sql
+
+rootdir="$(cd "${0%/*}/../." && pwd -P)"
+user="dvdrental"
+admin="${USER}"
+
+sed -Ee "s:__PATH__:${rootdir}/data:" $1

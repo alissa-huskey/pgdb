@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# drop and restore database from generated SQL
+
+rootdir="$(cd "${0%/*}/../." && pwd -P)"
+datadir="${rootdir}/data"
+
+loadfile() {
+  local user=dvdrental database=dvdrental filename="$1"
+  tools/mksql ${datadir}/${filename}.sql | psql --user=$user ${database} 
+}
+
+${rootdir}/tools/setup || exit $?
+loadfile db            || exit $?
