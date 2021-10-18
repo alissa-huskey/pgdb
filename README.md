@@ -9,7 +9,15 @@ Sample database downloaded from [PostgreSQL Tutorial][sample-db].
 [sample-db]: https://www.postgresqltutorial.com/postgresql-sample-database/
 [elephant]: https://www.elephantsql.com/
 [poetry]: https://python-poetry.org/
-[repo]: https://github.com/alissa-huskey/pgdb
+[repo]: https://github.com/alissa-huskey/pgdb.git
+
+Table of Contents
+-----------------
+
+* [Prerequisites](#prerequisites)
+* [Setup](#setup)
+* [Examples](#examples)
+
 
 Prerequisites
 -------------
@@ -22,15 +30,20 @@ Prerequisites
 Setup
 -----
 
+| [Config](#config) | [Scripts](#scripts) | [Development environment](#development-environment) |
+
 `tl;dr` [^*]
 
-1. `git clone https://github.com/alissa-huskey/pgdb.git`
-1. `cp env .env`
-1. `source .env`
-1. `./tools/mkdb`
-1. `poetry install`
-1. `poetry shell`
-1. `python pgdb/main.py`
+```bash
+git clone https://github.com/alissa-huskey/pgdb.git
+cd pgdb
+cp env .env
+source .env
+./tools/mkdb
+poetry install
+poetry shell
+python pgdb/main.py
+```
 
 [^*]: https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read
 
@@ -60,3 +73,15 @@ envionment, then activate it in your shell.
 poetry install
 poetry shell
 ```
+
+Python samples
+--------------
+
+This project includes simple scripts which connecting to the sample database
+and run a query using each of the following drivers:
+
+* [pg8000](pgdb/db_pg8000.py)
+* [postgresql](pgdb/db_postgresql.py)
+* [psycopg](pgdb/db_psycopg.py)
+
+----
